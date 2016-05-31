@@ -5,4 +5,4 @@ var Hero = (function () {
     return Hero;
 }());
 exports.Hero = Hero;
-//# sourceMappingURL=app.hero.js.map
+//# sourceMappingURL=hero.js.map

@@ -9,14 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var hero_detail_component_1 = require('./hero-detail.component');
 var AppComponent = (function () {
     function AppComponent() {
         this.heroes = HEROES;
         this.title = 'Tour of Heroes';
-        this.hero = {
-            id: 1,
-            name: 'Windstorm'
-        };
     }
     AppComponent.prototype.onSelect = function (hero) {
         this.selectedHero = hero;
@@ -25,7 +22,8 @@ var AppComponent = (function () {
         core_1.Component({
             selector: 'my-app',
             templateUrl: 'app/hero/heroes.html',
-            styleUrls: ['./app/hero/hero.css']
+            styleUrls: ['./app/hero/hero.css'],
+            directives: [hero_detail_component_1.HeroDetailComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

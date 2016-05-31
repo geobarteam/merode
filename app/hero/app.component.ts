@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { Hero } from './app.hero';
+import { Hero } from './hero';
+import { HeroDetailComponent } from './hero-detail.component';
+
 
 @Component({
     selector: 'my-app',
     templateUrl: 'app/hero/heroes.html',
-    styleUrls: ['./app/hero/hero.css']
+    styleUrls: ['./app/hero/hero.css'],
+    directives: [HeroDetailComponent]
 })
 
 export class AppComponent { 
@@ -13,12 +16,7 @@ export class AppComponent {
     selectedHero: Hero;
     
     title = 'Tour of Heroes';
-    
-    hero: Hero = {
-        id:1,
-        name: 'Windstorm'
-    };
-    
+        
     onSelect(hero:Hero){
       this.selectedHero = hero;
     }
