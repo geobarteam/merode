@@ -1,5 +1,5 @@
 "use strict";
 var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
-var app_component_1 = require('./hero/app.component');
-platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent);
+var team_component_1 = require('./team/team.component');
+platform_browser_dynamic_1.bootstrap(team_component_1.TeamComponent);
 //# sourceMappingURL=main.js.map

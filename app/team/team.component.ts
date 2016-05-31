@@ -1,28 +1,27 @@
 import { Component } from '@angular/core';
-import { Hero } from './hero';
-import { HeroDetailComponent } from './hero-detail.component';
+import { Player } from './player';
+import { PlayerDetailComponent } from './player-detail.component';
 
 
 @Component({
     selector: 'my-app',
-    templateUrl: 'app/hero/heroes.html',
-    styleUrls: ['./app/hero/hero.css'],
-    directives: [HeroDetailComponent]
+    templateUrl: 'app/team/team.html',
+    styleUrls: ['./app/team/team.css'],
+    directives: [PlayerDetailComponent]
 })
-
-export class AppComponent { 
+export class TeamComponent { 
     
-    public heroes = HEROES;
-    selectedHero: Hero;
+    public team = HEROES;
+    selectedPlayer: Player;
     
-    title = 'Tour of Heroes';
+    title = 'Tour of players';
         
-    onSelect(hero:Hero){
-      this.selectedHero = hero;
+    onSelect(player:Player){
+      this.selectedPlayer = player;
     }
 }
 
-var HEROES: Hero[] = [
+var HEROES: Player[] = [
   { "id": 11, "name": "Mr. Nice" },
   { "id": 12, "name": "Narco" },
   { "id": 13, "name": "Bombasto" },

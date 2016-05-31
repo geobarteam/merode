@@ -9,22 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var hero_1 = require('./hero');
-var HeroDetailComponent = (function () {
-    function HeroDetailComponent() {
+var player_1 = require('./player');
+var PlayerDetailComponent = (function () {
+    function PlayerDetailComponent() {
     }
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', hero_1.Hero)
-    ], HeroDetailComponent.prototype, "hero", void 0);
-    HeroDetailComponent = __decorate([
+        __metadata('design:type', player_1.Player)
+    ], PlayerDetailComponent.prototype, "player", void 0);
+    PlayerDetailComponent = __decorate([
         core_1.Component({
-            selector: 'my-hero-detail',
-            template: "\n  <div *ngIf=\"hero\">\n    <h2>{{hero.name}} details!</h2>\n    <div><label>id: </label>{{hero.id}}</div>\n    <div>\n      <label>name: </label>\n      <input [(ngModel)]=\"hero.name\" placeholder=\"name\"/>\n    </div>\n  </div>\n"
+            selector: 'player-detail',
+            template: "\n  <div *ngIf=\"player\">\n    <h2>{{player.name}} details!</h2>\n    <div><label>id: </label>{{player.id}}</div>\n    <div>\n      <label>name: </label>\n      <input [(ngModel)]=\"player.name\" placeholder=\"name\"/>\n    </div>\n  </div>\n"
         }), 
         __metadata('design:paramtypes', [])
-    ], HeroDetailComponent);
-    return HeroDetailComponent;
+    ], PlayerDetailComponent);
+    return PlayerDetailComponent;
 }());
-exports.HeroDetailComponent = HeroDetailComponent;
-//# sourceMappingURL=hero-detail.component.js.map
+exports.PlayerDetailComponent = PlayerDetailComponent;
+//# sourceMappingURL=player-detail.component.js.map
