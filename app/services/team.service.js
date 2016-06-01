@@ -9,22 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var player_1 = require('../model/player');
-var PlayerDetailComponent = (function () {
-    function PlayerDetailComponent() {
+var mock_players_1 = require('./mock-players');
+var TeamService = (function () {
+    function TeamService() {
     }
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', player_1.Player)
-    ], PlayerDetailComponent.prototype, "player", void 0);
-    PlayerDetailComponent = __decorate([
-        core_1.Component({
-            selector: 'player-detail',
-            template: "\n  <div *ngIf=\"player\">\n    <h2>{{player.name}} details!</h2>\n    <div><label>id: </label>{{player.id}}</div>\n    <div>\n      <label>name: </label>\n      <input [(ngModel)]=\"player.name\" placeholder=\"name\"/>\n    </div>\n  </div>\n"
-        }), 
+    TeamService.prototype.getPlayers = function (teamName) {
+        return mock_players_1.PLAYERS;
+    };
+    TeamService = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], PlayerDetailComponent);
-    return PlayerDetailComponent;
+    ], TeamService);
+    return TeamService;
 }());
-exports.PlayerDetailComponent = PlayerDetailComponent;
-//# sourceMappingURL=player-detail.component.js.map
+exports.TeamService = TeamService;
+//# sourceMappingURL=team.service.js.map

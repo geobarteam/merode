@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Player } from './player'
+import { Player } from '../model/player'
 
 
 @Component({

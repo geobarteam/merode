@@ -10,11 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var player_detail_component_1 = require('./player-detail.component');
+var team_service_1 = require('../services/team.service');
 var TeamComponent = (function () {
-    function TeamComponent() {
-        this.team = HEROES;
+    function TeamComponent(teamService) {
+        this.teamService = teamService;
         this.title = 'Tour of players';
     }
+    TeamComponent.prototype.ngOnInit = function () {
+        this.team = this.teamService.getPlayers("dummy");
+    };
     TeamComponent.prototype.onSelect = function (player) {
         this.selectedPlayer = player;
     };
@@ -23,23 +27,12 @@ var TeamComponent = (function () {
             selector: 'my-app',
             templateUrl: 'app/team/team.html',
             styleUrls: ['./app/team/team.css'],
-            directives: [player_detail_component_1.PlayerDetailComponent]
+            directives: [player_detail_component_1.PlayerDetailComponent],
+            providers: [team_service_1.TeamService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [team_service_1.TeamService])
     ], TeamComponent);
     return TeamComponent;
 }());
 exports.TeamComponent = TeamComponent;
-var HEROES = [
-    { "id": 11, "name": "Mr. Nice" },
-    { "id": 12, "name": "Narco" },
-    { "id": 13, "name": "Bombasto" },
-    { "id": 14, "name": "Celeritas" },
-    { "id": 15, "name": "Magneta" },
-    { "id": 16, "name": "RubberMan" },
-    { "id": 17, "name": "Dynama" },
-    { "id": 18, "name": "Dr IQ" },
-    { "id": 19, "name": "Magma" },
-    { "id": 20, "name": "Tornado" }
-];
 //# sourceMappingURL=team.component.js.map

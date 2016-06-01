@@ -1,17 +1,27 @@
 import { Component } from '@angular/core';
-import { Player } from './player';
+import { Player } from '../model/player';
 import { PlayerDetailComponent } from './player-detail.component';
+import { TeamService } from '../services/team.service'
+import { OnInit } from '@angular/core';
 
 
 @Component({
     selector: 'my-app',
     templateUrl: 'app/team/team.html',
     styleUrls: ['./app/team/team.css'],
-    directives: [PlayerDetailComponent]
+    directives: [PlayerDetailComponent],
+    providers: [TeamService]
 })
-export class TeamComponent { 
+export class TeamComponent implements OnInit { 
     
-    public team = HEROES;
+    team:Player[];
+    constructor(private teamService: TeamService){
+      
+    }
+    ngOnInit(){
+      this.team = this.teamService.getPlayers("dummy");
+    }
+    
     selectedPlayer: Player;
     
     title = 'Tour of players';
@@ -20,19 +30,3 @@ export class TeamComponent {
       this.selectedPlayer = player;
     }
 }
-
-var HEROES: Player[] = [
-  { "id": 11, "name": "Mr. Nice" },
-  { "id": 12, "name": "Narco" },
-  { "id": 13, "name": "Bombasto" },
-  { "id": 14, "name": "Celeritas" },
-  { "id": 15, "name": "Magneta" },
-  { "id": 16, "name": "RubberMan" },
-  { "id": 17, "name": "Dynama" },
-  { "id": 18, "name": "Dr IQ" },
-  { "id": 19, "name": "Magma" },
-  { "id": 20, "name": "Tornado" }
-];
-
-
-
