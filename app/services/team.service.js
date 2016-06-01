@@ -14,7 +14,7 @@ var TeamService = (function () {
     function TeamService() {
     }
     TeamService.prototype.getPlayers = function (teamName) {
-        return mock_players_1.PLAYERS;
+        return Promise.resolve(mock_players_1.PLAYERS);
     };
     TeamService = __decorate([
         core_1.Injectable(), 

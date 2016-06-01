@@ -17,7 +17,8 @@ var TeamComponent = (function () {
         this.title = 'Tour of players';
     }
     TeamComponent.prototype.ngOnInit = function () {
-        this.team = this.teamService.getPlayers("dummy");
+        var _this = this;
+        this.teamService.getPlayers("dummy").then(function (players) { return _this.team = players; });
     };
     TeamComponent.prototype.onSelect = function (player) {
         this.selectedPlayer = player;
