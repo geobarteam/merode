@@ -25,11 +25,10 @@ var TeamComponent = (function () {
     };
     TeamComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
+            selector: 'my-team',
             templateUrl: 'app/team/team.html',
             styleUrls: ['./app/team/team.css'],
-            directives: [player_detail_component_1.PlayerDetailComponent],
-            providers: [team_service_1.TeamService]
+            directives: [player_detail_component_1.PlayerDetailComponent]
         }), 
         __metadata('design:paramtypes', [team_service_1.TeamService])
     ], TeamComponent);

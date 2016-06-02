@@ -1,5 +1,5 @@
 import { bootstrap } from '@angular/platform-browser-dynamic';
 
-import { TeamComponent } from './team/team.component';
+import { AppComponent } from './app.component';
 
-bootstrap(TeamComponent);
+bootstrap(AppComponent);

@@ -6,11 +6,10 @@ import { OnInit } from '@angular/core';
 
 
 @Component({
-    selector: 'my-app',
+    selector: 'my-team',
     templateUrl: 'app/team/team.html',
     styleUrls: ['./app/team/team.css'],
-    directives: [PlayerDetailComponent],
-    providers: [TeamService]
+    directives: [PlayerDetailComponent]
 })
 export class TeamComponent implements OnInit { 
     
