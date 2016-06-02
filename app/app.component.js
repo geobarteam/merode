@@ -11,16 +11,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var team_service_1 = require('./services/team.service');
 var team_component_1 = require('./team/team.component');
+var dashboard_component_1 = require('./dashboard/dashboard.component');
+var router_deprecated_1 = require('@angular/router-deprecated');
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'Tour of team';
     }
     AppComponent = __decorate([
+        router_deprecated_1.RouteConfig([
+            {
+                path: '/team',
+                name: 'Team',
+                component: team_component_1.TeamComponent
+            },
+            {
+                path: '/dashboard',
+                name: 'Dashboard',
+                component: dashboard_component_1.DashboardComponent,
+                useAsDefault: true
+            }
+        ]),
         core_1.Component({
             selector: 'my-app',
-            template: "\n    <h1>{{title}}</h1>\n    <my-team></my-team>\n  ",
-            directives: [team_component_1.TeamComponent],
+            template: "\n   <h1>{{title}}</h1>\n    <nav>\n        <a [routerLink]=\"['Dashboard']\">Dashboard</a>\n        <a [routerLink]=\"['Team']\">Team</a>\n    </nav>\n    <router-outlet></router-outlet>\n  ",
+            directives: [router_deprecated_1.ROUTER_DIRECTIVES],
             providers: [
+                router_deprecated_1.ROUTER_PROVIDERS,
                 team_service_1.TeamService
             ]
         }), 
