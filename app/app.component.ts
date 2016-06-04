@@ -33,7 +33,7 @@ import { PlayerDetailComponent } from './team/player-detail.component';
     </nav>
     <router-outlet></router-outlet>
   `,
-  stylesUrls: ['./app/app.component.css'],
+  styleUrls: ['./app/app.component.css'],
   directives: [ROUTER_DIRECTIVES],
     providers: [
     ROUTER_PROVIDERS,
