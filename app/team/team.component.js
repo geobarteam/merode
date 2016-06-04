@@ -11,8 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var player_detail_component_1 = require('./player-detail.component');
 var team_service_1 = require('../services/team.service');
+var router_deprecated_1 = require('@angular/router-deprecated');
 var TeamComponent = (function () {
-    function TeamComponent(teamService) {
+    function TeamComponent(router, teamService) {
+        this.router = router;
         this.teamService = teamService;
         this.title = 'Tour of players';
     }
@@ -23,6 +25,10 @@ var TeamComponent = (function () {
     TeamComponent.prototype.onSelect = function (player) {
         this.selectedPlayer = player;
     };
+    TeamComponent.prototype.gotoDetail = function (player) {
+        var link = ['PlayerDetail', { id: player.id }];
+        this.router.navigate(link);
+    };
     TeamComponent = __decorate([
         core_1.Component({
             selector: 'my-team',
@@ -30,7 +36,7 @@ var TeamComponent = (function () {
             styleUrls: ['./app/team/team.css'],
             directives: [player_detail_component_1.PlayerDetailComponent]
         }), 
-        __metadata('design:paramtypes', [team_service_1.TeamService])
+        __metadata('design:paramtypes', [router_deprecated_1.Router, team_service_1.TeamService])
     ], TeamComponent);
     return TeamComponent;
 }());

@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Player } from '../model/player';
-import { TeamService } from '../services/team.service'
+import { TeamService } from '../services/team.service';
+import { Router } from '@angular/router-deprecated';
+
 
 @Component({
   selector: 'my-dashboard',
-  templateUrl: 'app/dashboard/dashboard.component.html'
+  templateUrl: 'app/dashboard/dashboard.component.html',
+  styleUrls: ['./app/dashboard/dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
     
     players: Player[]
-    constructor(private teamService:TeamService){
+    constructor(
+        private router: Router,
+        private teamService:TeamService){
        
     }
     
@@ -19,6 +24,9 @@ export class DashboardComponent implements OnInit {
         })
     }
     
-    gotoDetail(){ /* not implemented yet */}
+    gotoDetail(player: Player) {
+        let link = ['PlayerDetail', { id: player.id }];
+        this.router.navigate(link);
+        }
     
  }

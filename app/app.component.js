@@ -13,9 +13,10 @@ var team_service_1 = require('./services/team.service');
 var team_component_1 = require('./team/team.component');
 var dashboard_component_1 = require('./dashboard/dashboard.component');
 var router_deprecated_1 = require('@angular/router-deprecated');
+var player_detail_component_1 = require('./team/player-detail.component');
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'Tour of team';
+        this.title = 'My Team';
     }
     AppComponent = __decorate([
         router_deprecated_1.RouteConfig([
@@ -29,11 +30,17 @@ var AppComponent = (function () {
                 name: 'Dashboard',
                 component: dashboard_component_1.DashboardComponent,
                 useAsDefault: true
+            },
+            {
+                path: '/detail/:id',
+                name: 'PlayerDetail',
+                component: player_detail_component_1.PlayerDetailComponent
             }
         ]),
         core_1.Component({
             selector: 'my-app',
             template: "\n   <h1>{{title}}</h1>\n    <nav>\n        <a [routerLink]=\"['Dashboard']\">Dashboard</a>\n        <a [routerLink]=\"['Team']\">Team</a>\n    </nav>\n    <router-outlet></router-outlet>\n  ",
+            stylesUrls: ['./app/app.component.css'],
             directives: [router_deprecated_1.ROUTER_DIRECTIVES],
             providers: [
                 router_deprecated_1.ROUTER_PROVIDERS,

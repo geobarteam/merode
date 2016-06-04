@@ -6,4 +6,9 @@
         <span class="badge">{{player.id}}</span> {{player.name}}
       </li>
     </ul>
-<player-detail [player]="selectedPlayer"></player-detail>
+<div *ngIf="selectedPlayer">
+  <h2>
+    {{selectedPlayer.name | uppercase}} is my player
+  </h2>
+  <button (click)="gotoDetail(selectedPlayer)">View Details</button>
+</div>

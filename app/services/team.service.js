@@ -16,6 +16,9 @@ var TeamService = (function () {
     TeamService.prototype.getPlayers = function (teamName) {
         return Promise.resolve(mock_players_1.PLAYERS);
     };
+    TeamService.prototype.getPlayer = function (id) {
+        return Promise.resolve(mock_players_1.PLAYERS).then(function (heroes) { return heroes.filter(function (hero) { return hero.id === id; })[0]; });
+    };
     TeamService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

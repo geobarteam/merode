@@ -3,6 +3,7 @@ import { TeamService } from './services/team.service'
 import { TeamComponent } from './team/team.component'
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import { PlayerDetailComponent } from './team/player-detail.component';
 
 @RouteConfig([
   {
@@ -15,6 +16,11 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
       name: 'Dashboard',
       component: DashboardComponent,
       useAsDefault: true
+  },
+  {
+      path: '/detail/:id',
+      name: 'PlayerDetail',
+      component: PlayerDetailComponent
   }
 ])
 @Component({
@@ -27,6 +33,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
     </nav>
     <router-outlet></router-outlet>
   `,
+  stylesUrls: ['./app/app.component.css'],
   directives: [ROUTER_DIRECTIVES],
     providers: [
     ROUTER_PROVIDERS,
@@ -34,5 +41,5 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
     ]
 })
 export class AppComponent {
-  title = 'Tour of team';
+  title = 'My Team';
 }

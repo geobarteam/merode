@@ -10,9 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var player_1 = require('../model/player');
+var router_deprecated_1 = require('@angular/router-deprecated');
+var team_service_1 = require('../services/team.service');
 var PlayerDetailComponent = (function () {
-    function PlayerDetailComponent() {
+    function PlayerDetailComponent(teamService, routeParams) {
+        this.teamService = teamService;
+        this.routeParams = routeParams;
     }
+    PlayerDetailComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var id = +this.routeParams.get('id');
+        this.teamService.getPlayer(id)
+            .then(function (player) { return _this.player = player; });
+    };
+    PlayerDetailComponent.prototype.goBack = function () {
+        window.history.back();
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', player_1.Player)
@@ -20,9 +33,10 @@ var PlayerDetailComponent = (function () {
     PlayerDetailComponent = __decorate([
         core_1.Component({
             selector: 'player-detail',
-            template: "\n  <div *ngIf=\"player\">\n    <h2>{{player.name}} details!</h2>\n    <div><label>id: </label>{{player.id}}</div>\n    <div>\n      <label>name: </label>\n      <input [(ngModel)]=\"player.name\" placeholder=\"name\"/>\n    </div>\n  </div>\n"
+            template: "\n  <div *ngIf=\"player\">\n    <h2>{{player.name}} details!</h2>\n    <div><label>id: </label>{{player.id}}</div>\n    <div>\n      <label>name: </label>\n      <input [(ngModel)]=\"player.name\" placeholder=\"name\"/>\n    </div>\n    <button (click)=\"goBack()\">Back</button>\n  </div>\n",
+            styleUrls: ['./app/team/player-detail.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [team_service_1.TeamService, router_deprecated_1.RouteParams])
     ], PlayerDetailComponent);
     return PlayerDetailComponent;
 }());

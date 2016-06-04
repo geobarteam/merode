@@ -10,8 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var team_service_1 = require('../services/team.service');
+var router_deprecated_1 = require('@angular/router-deprecated');
 var DashboardComponent = (function () {
-    function DashboardComponent(teamService) {
+    function DashboardComponent(router, teamService) {
+        this.router = router;
         this.teamService = teamService;
     }
     DashboardComponent.prototype.ngOnInit = function () {
@@ -20,13 +22,17 @@ var DashboardComponent = (function () {
             _this.players = players.slice(1, 5);
         });
     };
-    DashboardComponent.prototype.gotoDetail = function () { };
+    DashboardComponent.prototype.gotoDetail = function (player) {
+        var link = ['PlayerDetail', { id: player.id }];
+        this.router.navigate(link);
+    };
     DashboardComponent = __decorate([
         core_1.Component({
             selector: 'my-dashboard',
-            templateUrl: 'app/dashboard/dashboard.component.html'
+            templateUrl: 'app/dashboard/dashboard.component.html',
+            styleUrls: ['./app/dashboard/dashboard.component.css']
         }), 
-        __metadata('design:paramtypes', [team_service_1.TeamService])
+        __metadata('design:paramtypes', [router_deprecated_1.Router, team_service_1.TeamService])
     ], DashboardComponent);
     return DashboardComponent;
 }());
