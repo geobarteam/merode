@@ -1,0 +1,11 @@
+{
+  "globalDependencies": {
+    "body-parser": "registry:dt/body-parser#0.0.0+20160317120654",
+    "core-js": "registry:dt/core-js#0.0.0+20160317120654",
+    "express": "registry:dt/express#4.0.0+20160317120654",
+    "node": "registry:dt/node#4.0.0+20160509154515"
+  },
+  "dependencies": {
+    "lodash": "registry:npm/lodash#4.0.0+20160416211519"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "merode-server",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "postinstall": "typings install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/geobarteam/merode.git"
+  },
+  "author": "Geoffrey Vandiest",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/geobarteam/merode/issues"
+  },
+  "dependencies": {
+    "express": "~4.13.4",
+    "lodash": "~4.11.1",
+    "body-parser": "~1.15.0"
+  },
+  "devDependencies": {
+    "typescript": "^1.8.10",
+    "typings":"^1.0.4"
+  }
+}
