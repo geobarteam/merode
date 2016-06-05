@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "postinstall": "typings install"
+    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run express\" ",
+    "express": "node ./index.js",
+    "postinstall": "typings install",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "typings": "typings"
   },
   "repository": {
     "type": "git",
@@ -18,12 +21,13 @@
     "url": "https://github.com/geobarteam/merode/issues"
   },
   "dependencies": {
+    "body-parser": "~1.15.0",
+    "concurrently": "^2.1.0",
     "express": "~4.13.4",
-    "lodash": "~4.11.1",
-    "body-parser": "~1.15.0"
+    "lodash": "~4.11.1"
   },
   "devDependencies": {
     "typescript": "^1.8.10",
-    "typings":"^1.0.4"
+    "typings": "^1.0.4"
   }
 }
