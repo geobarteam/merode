@@ -7,3 +7,5 @@
 /// <reference path="globals/serve-static/index.d.ts" />
 /// <reference path="modules/lodash/index.d.ts" />
 /// <reference path="modules/mime/index.d.ts" />
+/// <reference path="../model/player.ts" />
+

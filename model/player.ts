@@ -1,4 +1,6 @@
-export class Player{
-        id:number;
-        name:string;
-    }
+
+    export class Player{
+            id:number;
+            name:string;
+        }
+

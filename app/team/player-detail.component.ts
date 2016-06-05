@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Player } from 'model/player'
+import { Player } from '../../model/player';
 import { RouteParams } from '@angular/router-deprecated';
 import { TeamService } from '../services/team.service';
 
