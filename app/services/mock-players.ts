@@ -1,4 +1,4 @@
-import { Player } from '../model/player';
+import { Player } from 'model/player';
 export var PLAYERS: Player[] = [
   {id: 11, name: 'Mr. Nice'},
   {id: 12, name: 'Narco'},

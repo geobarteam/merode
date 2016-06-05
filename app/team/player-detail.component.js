@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var player_1 = require('../model/player');
+var player_1 = require('model/player');
 var router_deprecated_1 = require('@angular/router-deprecated');
 var team_service_1 = require('../services/team.service');
 var PlayerDetailComponent = (function () {
@@ -28,7 +28,7 @@ var PlayerDetailComponent = (function () {
     };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', player_1.Player)
+        __metadata('design:type', (typeof (_a = typeof player_1.Player !== 'undefined' && player_1.Player) === 'function' && _a) || Object)
     ], PlayerDetailComponent.prototype, "player", void 0);
     PlayerDetailComponent = __decorate([
         core_1.Component({
@@ -39,6 +39,7 @@ var PlayerDetailComponent = (function () {
         __metadata('design:paramtypes', [team_service_1.TeamService, router_deprecated_1.RouteParams])
     ], PlayerDetailComponent);
     return PlayerDetailComponent;
+    var _a;
 }());
 exports.PlayerDetailComponent = PlayerDetailComponent;
 //# sourceMappingURL=player-detail.component.js.map
