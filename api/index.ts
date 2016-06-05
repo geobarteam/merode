@@ -7,6 +7,9 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+/// <reference path="./player.ts" />
+import * as player from "./player";
+player.players(app);
 
 
 var server = app.listen(3000, function () {

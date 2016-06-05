@@ -2,9 +2,21 @@ import * as express from "express";
 import * as _ from "lodash";
 import { Player } from "../model/player"
 
+var PLAYERS: Player[] = [
+  {id: 11, name: 'Mr. Nice'},
+  {id: 12, name: 'Narco'},
+  {id: 13, name: 'Bombasto'},
+  {id: 14, name: 'Celeritas'},
+  {id: 15, name: 'Magneta'},
+  {id: 16, name: 'RubberMan'},
+  {id: 17, name: 'Dynama'},
+  {id: 18, name: 'Dr IQ'},
+  {id: 19, name: 'Magma'},
+  {id: 20, name: 'Tornado'}
+];
 
 export function players(app:express.Express) {
-    var _players = [];
+    var _players = PLAYERS;
     /* Create */
     app.post('/player', function (req, res) {
         _players.push(req.body);
