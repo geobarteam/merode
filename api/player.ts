@@ -1,6 +1,6 @@
 import * as express from "express";
 import * as _ from "lodash";
-import { Player } from "../model/player"
+import { Player } from "../public/model/player"
 
 var PLAYERS: Player[] = [
   {id: 11, name: 'Mr. Nice'},
