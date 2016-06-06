@@ -4,8 +4,8 @@
   "description": "Hockey Club Merode Web App",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" \"npm run api\" ",
-    "startapi": "tsc && concurrently \"npm run tsc:w\" \"npm run api\" ",
+    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run api\" ",
+    "startLite": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "api": "node ./api/index.js",
     "lite": "lite-server",
     "postinstall": "typings install",
