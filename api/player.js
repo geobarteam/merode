@@ -15,21 +15,21 @@ var PLAYERS = [
 function players(app) {
     var _players = PLAYERS;
     /* Create */
-    app.post('/player', function (req, res) {
+    app.post('/api/player', function (req, res) {
         _players.push(req.body);
         res.json({ info: 'player created successfully' });
     });
     /* Read */
-    app.get('/player', function (req, res) {
+    app.get('/api/player', function (req, res) {
         res.send(_players);
     });
-    app.get('/player/:id', function (req, res) {
+    app.get('/api/player/:id', function (req, res) {
         res.send(_.find(_players, {
             name: req.params.id
         }));
     });
     /* Update */
-    app.put('/player/:id', function (req, res) {
+    app.put('/api/player/:id', function (req, res) {
         var index = _.findIndex(_players, {
             name: req.params.id
         });
@@ -37,7 +37,7 @@ function players(app) {
         res.json({ info: 'player updated successfully!' });
     });
     /* Delete */
-    app.delete('/player/:id', function (req, res) {
+    app.delete('/api/player/:id', function (req, res) {
         _.remove(_players, function (player) {
             return player.name === req.params.id;
         });
