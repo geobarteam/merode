@@ -14,7 +14,7 @@ require('rxjs/add/operator/toPromise');
 var TeamService = (function () {
     function TeamService(http) {
         this.http = http;
-        this.heroesUrl = 'api/player'; // URL to web api
+        this.heroesUrl = 'http://localhost:3000/api/player'; // URL to web api
     }
     TeamService.prototype.getPlayers = function (teamName) {
         return this.http.get(this.heroesUrl)
