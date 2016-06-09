@@ -2,14 +2,17 @@
   "globalDependencies": {
     "body-parser": "registry:dt/body-parser#0.0.0+20160317120654",
     "core-js": "registry:dt/core-js#0.0.0+20160317120654",
+    "express": "registry:dt/express#4.0.0+20160317120654",
+    "express-serve-static-core": "registry:dt/express-serve-static-core#0.0.0+20160602151406",
     "jasmine": "registry:dt/jasmine#2.2.0+20160505161446",
     "node": "registry:dt/node#4.0.0+20160509154515",
-     "express": "registry:dt/express#4.0.0+20160317120654",
-    "express-serve-static-core": "registry:dt/express-serve-static-core#0.0.0+20160602151406",
     "serve-static": "registry:dt/serve-static#0.0.0+20160501131543"
   },
-   "dependencies": {
+  "dependencies": {
     "lodash": "registry:npm/lodash#4.0.0+20160416211519",
     "mime": "registry:npm/mime#1.3.0+20160423043021"
+  },
+  "devDependencies": {
+    "mongoose": "registry:npm/mongoose#4.3.5+20160531094808"
   }
 }

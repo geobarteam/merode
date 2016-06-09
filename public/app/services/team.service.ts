@@ -1,4 +1,4 @@
-import { Player } from '../../model/player';
+import { IPlayer } from '../model/IPlayer';
 import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
@@ -10,16 +10,16 @@ export class TeamService {
 
   constructor(private http: Http) { }
 
-  getPlayers(teamName:string):Promise<Player[]>{
+  getPlayers(teamName:string):Promise<IPlayer[]>{
     return this.http.get(this.heroesUrl)
                .toPromise()
-               .then(response => response.json())
+               .then(response => response.json().data)
                .catch(this.handleError);
   }
 
-  getPlayer(id: number) {
+  getPlayer(name: string) {
     return this.getPlayers('merode')
-               .then(players => players.filter(player => player.id === id)[0]);
+               .then(players => players.filter(player => player.name === name)[0]);
   }
 
   

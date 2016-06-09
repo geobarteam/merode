@@ -16,6 +16,10 @@ gulp.task('copy:libraries', function () {
                 .pipe(gulp.dest(angularPath));
   var rxjs = gulp.src('./node_modules/rxjs/**/*.js', {base: './node_modules/rxjs'})
                 .pipe(gulp.dest(rxjsPath));
+                
+  var mongoose = gulp.src('./node_modules/mongoose/**/*.js', {base: './node_modules/@angular'})
+                .pipe(gulp.dest(jsPath +'/mongoose'));
+                
   gulp.src('./node_modules/core-js/client/shim.min.js').pipe(gulp.dest(jsPath + '/core-js/client'))
   gulp.src('./node_modules/zone.js/dist/zone.js').pipe(gulp.dest(jsPath + '/zone.js/dist'))
   gulp.src('./node_modules/reflect-metadata/Reflect.js').pipe(gulp.dest(jsPath + '/reflect-metadata'))
@@ -24,11 +28,12 @@ gulp.task('copy:libraries', function () {
   return merge(angular, rxjs);
 });
 
-gulp.task('clean', ['clean:js']);
+gulp.task('clean', ['clean:js', 'clean:app']);
 gulp.task('clean:app', function(){
     return gulp.src(appjsPath, { read:false })
         .pipe(gulpRimRaf());
 });
+
 gulp.task('clean:js', ['clean:angular', 'clean:rxjs'])
 gulp.task('clean:angular', function (cb) {
    rimraf(angularPath, cb);

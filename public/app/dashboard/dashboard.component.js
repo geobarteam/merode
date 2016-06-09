@@ -23,7 +23,7 @@ var DashboardComponent = (function () {
         });
     };
     DashboardComponent.prototype.gotoDetail = function (player) {
-        var link = ['PlayerDetail', { id: player.id }];
+        var link = ['PlayerDetail', { name: player.name }];
         this.router.navigate(link);
     };
     DashboardComponent = __decorate([

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Player } from '../../model/player';
+import { IPlayer } from '../model/IPlayer';
 import { TeamService } from '../services/team.service';
 import { Router } from '@angular/router-deprecated';
 
@@ -11,7 +11,7 @@ import { Router } from '@angular/router-deprecated';
 })
 export class DashboardComponent implements OnInit {
     
-    players: Player[]
+    players: IPlayer[]
     constructor(
         private router: Router,
         private teamService:TeamService){
@@ -24,8 +24,8 @@ export class DashboardComponent implements OnInit {
         })
     }
     
-    gotoDetail(player: Player) {
-        let link = ['PlayerDetail', { id: player.id }];
+    gotoDetail(player: IPlayer) {
+        let link = ['PlayerDetail', { name: player.name }];
         this.router.navigate(link);
         }
     

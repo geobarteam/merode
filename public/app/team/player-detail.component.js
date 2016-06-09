@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var player_1 = require('../../model/player');
 var router_deprecated_1 = require('@angular/router-deprecated');
 var team_service_1 = require('../services/team.service');
 var PlayerDetailComponent = (function () {
@@ -19,8 +18,8 @@ var PlayerDetailComponent = (function () {
     }
     PlayerDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var id = +this.routeParams.get('id');
-        this.teamService.getPlayer(id)
+        var name = this.routeParams.get('name');
+        this.teamService.getPlayer(name)
             .then(function (player) { return _this.player = player; });
     };
     PlayerDetailComponent.prototype.goBack = function () {
@@ -28,7 +27,7 @@ var PlayerDetailComponent = (function () {
     };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', player_1.Player)
+        __metadata('design:type', Object)
     ], PlayerDetailComponent.prototype, "player", void 0);
     PlayerDetailComponent = __decorate([
         core_1.Component({

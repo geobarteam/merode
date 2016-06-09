@@ -32,7 +32,7 @@ var AppComponent = (function () {
                 useAsDefault: true
             },
             {
-                path: '/detail/:id',
+                path: '/detail/:name',
                 name: 'PlayerDetail',
                 component: player_detail_component_1.PlayerDetailComponent
             }

@@ -18,7 +18,7 @@ import { PlayerDetailComponent } from './team/player-detail.component';
       useAsDefault: true
   },
   {
-      path: '/detail/:id',
+      path: '/detail/:name',
       name: 'PlayerDetail',
       component: PlayerDetailComponent
   }

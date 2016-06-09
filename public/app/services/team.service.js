@@ -19,12 +19,12 @@ var TeamService = (function () {
     TeamService.prototype.getPlayers = function (teamName) {
         return this.http.get(this.heroesUrl)
             .toPromise()
-            .then(function (response) { return response.json(); })
+            .then(function (response) { return response.json().data; })
             .catch(this.handleError);
     };
-    TeamService.prototype.getPlayer = function (id) {
+    TeamService.prototype.getPlayer = function (name) {
         return this.getPlayers('merode')
-            .then(function (players) { return players.filter(function (player) { return player.id === id; })[0]; });
+            .then(function (players) { return players.filter(function (player) { return player.name === name; })[0]; });
     };
     TeamService.prototype.handleError = function (error) {
         console.error('An error occurred', error);
