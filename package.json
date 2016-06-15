@@ -9,7 +9,6 @@
     "startLite": "tsc && gulp && concurrently \"npm run tsc:w\" \"npm run lite\" \"npm run node\" ",
     "node": "node ./index.js",
     "lite": "lite-server",
-    "postinstall": "typings install",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "typings": "typings"
