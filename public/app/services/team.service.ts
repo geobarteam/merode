@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class TeamService {
 
-  private heroesUrl = 'http://localhost:3000/api/player';  // URL to web api
+  private heroesUrl = '/api/player';  // URL to web api
 
   constructor(private http: Http) { }
 

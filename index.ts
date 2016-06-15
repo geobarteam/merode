@@ -1,23 +1,25 @@
 import * as express from "express";
 import * as bodyParser from "body-parser"
+import { Config } from "./config/config"
 var app = express();
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/merode');
+mongoose.connect(Config.current.mongoConnectionString);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+if (Config.env == 'development'){
+    app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+    });
+};
 
-app.use('/', express.static(__dirname + '/public'));
-app.use('/node_modules', express.static(__dirname + '/node_modules'));
+app.use('/', express.static(Config.current.root + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
@@ -29,6 +31,6 @@ import * as player from "./api/player";
 player.players(app);
 
 
-var server = app.listen(3000, function () {
-    console.log('Server running at http://127.0.0.1:3000/');
+var server = app.listen(Config.current.port, function () {
+    console.log('Server listening on port' + Config.current.port);
 });
