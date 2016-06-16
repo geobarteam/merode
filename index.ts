@@ -1,6 +1,7 @@
 import * as express from "express";
 import * as bodyParser from "body-parser"
 import { Config } from "./config/config"
+import * as player from "./api/player";
 var app = express();
 
 var mongoose = require('mongoose');
@@ -18,6 +19,8 @@ if (Config.env == 'development'){
     next();
     });
 };
+
+player.players(app);
 
 app.use('/', express.static(Config.current.root + '/public'));
 app.use(bodyParser.json());
@@ -40,10 +43,6 @@ app.use(function (err:Error, res, next) {
     title: 'error'
     });
 });
-
-/// <reference path="./player.ts" />
-import * as player from "./api/player";
-player.players(app);
 
 var server = app.listen(Config.current.port, function () {
     console.log('Server listening on port' + Config.current.port);

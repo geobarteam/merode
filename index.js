@@ -2,6 +2,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var config_1 = require("./config/config");
+var player = require("./api/player");
 var app = express();
 var mongoose = require('mongoose');
 mongoose.connect(config_1.Config.current.mongoConnectionString);
@@ -17,6 +18,7 @@ if (config_1.Config.env == 'development') {
     });
 }
 ;
+player.players(app);
 app.use('/', express.static(config_1.Config.current.root + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -35,9 +37,6 @@ app.use(function (err, res, next) {
         title: 'error'
     });
 });
-/// <reference path="./player.ts" />
-var player = require("./api/player");
-player.players(app);
 var server = app.listen(config_1.Config.current.port, function () {
     console.log('Server listening on port' + config_1.Config.current.port);
 });
