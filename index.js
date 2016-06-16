@@ -22,9 +22,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-/// <reference path="./player.ts" />
-var player = require("./api/player");
-player.players(app);
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
@@ -38,6 +35,9 @@ app.use(function (err, res, next) {
         title: 'error'
     });
 });
+/// <reference path="./player.ts" />
+var player = require("./api/player");
+player.players(app);
 var server = app.listen(config_1.Config.current.port, function () {
     console.log('Server listening on port' + config_1.Config.current.port);
 });

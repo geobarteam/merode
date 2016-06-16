@@ -25,11 +25,6 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-
-/// <reference path="./player.ts" />
-import * as player from "./api/player";
-player.players(app);
-
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
@@ -37,15 +32,18 @@ app.use(function (req, res, next) {
   });
   
 
-    app.use(function (err:Error, res, next) {
-      res.status(err.status || 500);
-      res.render('error', {
-        message: err.message,
-        error: err,
-        title: 'error'
-      });
+app.use(function (err:Error, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+    message: err.message,
+    error: err,
+    title: 'error'
     });
-  
+});
+
+/// <reference path="./player.ts" />
+import * as player from "./api/player";
+player.players(app);
 
 var server = app.listen(Config.current.port, function () {
     console.log('Server listening on port' + Config.current.port);
