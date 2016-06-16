@@ -30,7 +30,37 @@ app.use(bodyParser.urlencoded({
 import * as player from "./api/player";
 player.players(app);
 
+app.use(function (req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+  });
+  
+
+    app.use(function (err:Error, res, next) {
+      res.status(err.status || 500);
+      res.render('error', {
+        message: err.message,
+        error: err,
+        title: 'error'
+      });
+    });
+  
 
 var server = app.listen(Config.current.port, function () {
     console.log('Server listening on port' + Config.current.port);
 });
+
+interface Error {
+    name: string;
+    message: string;
+    status:number;
+}
+
+interface ErrorConstructor {
+    new (message?: string): Error;
+    (message?: string): Error;
+    prototype: Error;
+}
+
+declare var Error: ErrorConstructor;
