@@ -1,5 +1,6 @@
 "use strict";
 var Player = require("./mongoose/player");
+var config_1 = require("../config/config");
 function players(app) {
     /* Create */
     app.post('/api/player', function (req, res) {
@@ -10,6 +11,9 @@ function players(app) {
             }
             res.json({ info: 'player saved successfully', data: newPlayer });
         });
+    });
+    app.get('/api/conf', function (req, res) {
+        res.json(config_1.Config.env);
     });
     /* Read */
     app.get('/api/player', function (req, res) {
