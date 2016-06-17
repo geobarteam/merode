@@ -1,8 +1,8 @@
 import * as express from "express";
 import * as _ from "lodash";
-import { IPlayer } from "../public/app/model/IPlayer"
+import { IPlayer } from "../public/app/model/IPlayer";
 import * as Player from "./mongoose/player";
-
+import { Config } from "../config/config";
 
 export function players(app:express.Express) {
 
@@ -15,6 +15,10 @@ export function players(app:express.Express) {
             }
             res.json({info: 'player saved successfully', data: newPlayer}); 
         });
+    });
+
+    app.get('/api/conf', function (req, res) {
+       res.json(Config.env); 
     });
 
     /* Read */
