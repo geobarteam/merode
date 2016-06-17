@@ -12,10 +12,11 @@ import { Router } from '@angular/router-deprecated';
 export class DashboardComponent implements OnInit {
     
     players: IPlayer[]
+    IDBEnvironment:string;
     constructor(
         private router: Router,
         private teamService:TeamService){
-       
+    
     }
     
     ngOnInit(){

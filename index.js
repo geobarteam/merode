@@ -5,7 +5,7 @@ var config_1 = require("./config/config");
 var player = require("./api/player");
 var app = express();
 var mongoose = require('mongoose');
-//mongoose.connect(Config.current.mongoConnectionString);
+mongoose.connect(config_1.Config.current.mongoConnectionString);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
