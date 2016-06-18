@@ -1,0 +1,11 @@
+<h3>Top Players</h3>
+<div class="grid grid-pad">
+  <nav>
+  <div *ngFor="let player of players" (click)="gotoDetail(player)" class="col-1-4">
+      
+    <div class="module player">
+      <h4>{{player.name}}</h4>
+    </div>
+    
+  </div></nav>
+</div>
