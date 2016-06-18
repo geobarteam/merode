@@ -4,14 +4,12 @@
   "description": "Hockey Club Merode Web App",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "startNode": "tsc && gulp && concurrently \"npm run node\" ",
-    "startLite": "tsc && gulp && concurrently \"npm run tsc:w\" \"npm run lite\" \"npm run node\" ",
-    "node": "node ./index.js",
+    "start": "node ./dist/index.js",
+    "buildStart": "gulp && concurrently \"npm start\" \"npm run watch\"",
+    "startLite": "gulp && concurrently \"npm run lite\" \"npm run watch\" \"npm start\" ",
     "lite": "lite-server",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "typings": "typings"
+    "typings": "typings",
+    "watch": "gulp watch:client"
   },
   "repository": {
     "type": "git",
@@ -47,11 +45,18 @@
   },
   "devDependencies": {
     "concurrently": "^2.0.0",
+    "del": "^2.2.0",
     "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssmin": "0.1.7",
     "gulp-rimraf": "^0.2.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^2.13.4",
+    "gulp-uglify": "1.2.0",
     "lite-server": "^2.2.0",
     "merge": "^1.2.0",
     "rimraf": "^2.5.2",
+    "run-sequence": "^1.2.1",
     "typescript": "^1.8.10"
   }
 }

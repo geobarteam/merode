@@ -1,5 +1,5 @@
 {
   "port": 8000,
-  "files": ["./public/**/*.{html,htm,css,js}"],
-  "server": { "baseDir": "./public" }
+  "files": ["./dist/public/**/*.{html,htm,css,js}"],
+  "server": { "baseDir": "./dist/public" }
 }
