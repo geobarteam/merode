@@ -8,7 +8,11 @@ export class TeamService {
 
   private heroesUrl = '/api/player';  // URL to web api
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) { 
+    if (window.location.href.startsWith('http://localhost:8000')){
+      this.heroesUrl = 'http://localhost:3000'+ this.heroesUrl;
+    }
+  }
 
   getPlayers(teamName:string):Promise<IPlayer[]>{
     return this.http.get(this.heroesUrl)
