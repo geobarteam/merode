@@ -5,7 +5,7 @@ import * as player from "./api/player";
 var app = express();
 
 var mongoose = require('mongoose');
-//mongoose.connect(Config.current.mongoConnectionString);
+mongoose.connect(Config.current.mongoConnectionString);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
