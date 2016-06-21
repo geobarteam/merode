@@ -11,7 +11,7 @@ var Config = (function () {
             name: 'Merode'
         },
         port: process.env.PORT || 3000,
-        mongoConnectionString: 'mongodb://localhost/merode',
+        mongoConnectionString: 'mongodb://merodeUser:starwars@52.169.176.121/merode',
     };
     Config.production = {
         root: Config.rootPath,
@@ -19,7 +19,7 @@ var Config = (function () {
             name: 'Merode'
         },
         port: process.env.PORT || 3000,
-        mongoConnectionString: 'mongodb://localhost/merode',
+        mongoConnectionString: 'mongodb://merodeUser:starwars@52.169.176.121/merode',
     };
     Config.current = Config[Config.env];
     return Config;
