@@ -8,9 +8,10 @@ export class TeamService {
 
   private heroesUrl = '/api/player';  // URL to web api
 
+  private listeUrl = "http://localhost:8000";
   constructor(private http: Http) { 
-    if (window.location.href.startsWith('http://localhost:8000')){
-      this.heroesUrl = 'http://localhost:3000'+ this.heroesUrl;
+    if (window.location.href.startsWith(this.listeUrl)){
+      this.heroesUrl = "http://localhost:3000" + this.heroesUrl;
     }
   }
 

@@ -29,7 +29,8 @@ export class Config {
         name: 'Merode'
         },
         port: process.env.PORT || 3000,
-        mongoConnectionString: 'mongodb://merodeUser:starwars@52.169.176.121/merode',
+        mongoConnectionString: process.env.CUSTOMCONNSTR_MONGODB,
+
     }
     static current:IConfigEnv = Config[Config.env];
 };
