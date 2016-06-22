@@ -7,8 +7,12 @@ import 'rxjs/add/operator/toPromise';
 export class TeamService {
 
   private heroesUrl = '/api/player';  // URL to web api
-
-  constructor(private http: Http) { }
+  private listeUrl = "http://localhost:8000";
+  constructor(private http: Http) { 
+    if (window.location.href.startsWith(this.listeUrl)){
+      this.heroesUrl = "http://localhost:3000" + this.heroesUrl;
+    }
+  }
 
   getPlayers(teamName:string):Promise<IPlayer[]>{
     return this.http.get(this.heroesUrl)
