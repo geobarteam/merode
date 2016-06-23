@@ -6,9 +6,13 @@
         <span class="badge">{{player.name}}</span> {{player.name}}
       </li>
     </ul>
+<div>
+   <button (click)="gotoAddPlayer()">Add Player</button>
+</div>
 <div *ngIf="selectedPlayer">
   <h2>
     {{selectedPlayer.name | uppercase}} is my super player
   </h2>
   <button (click)="gotoDetail(selectedPlayer)">View Details</button>
 </div>
+

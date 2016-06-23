@@ -38,4 +38,8 @@ export class TeamComponent implements OnInit {
         let link = ['PlayerDetail', { name: player.name }];
         this.router.navigate(link);
         }
+    gotoAddPlayer(){
+        let link = ['AddPlayer'];
+        this.router.navigate(link);
+    }
 }
