@@ -1,0 +1,12 @@
+<h3>Register</h3>
+<div class="grid grid-pad">
+  <div class="module player">
+    <div>
+      <label>e-mail</label>
+      <input type="text" name="emailinput" [(ngModel)]="user.email" class="form-control" />
+    </div>
+    <div>
+      <button type="button" class="btn btn-default" (click)="submit(user)">Submit</button>
+    </div>
+  </div>
+</div>

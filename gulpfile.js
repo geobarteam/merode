@@ -10,10 +10,15 @@ var merge = require ('merge-stream');
 var libPath= './dist/public/lib' ,
 angularPath = libPath + '/@angular',
 rxjsPath = libPath + '/rxjs',
-appjsPath = './dist/apublic/app/**/*.{js,js.map}';
+appjsPath = './dist/apublic/app/**/*.{js,js.map}',
+cssPath = './dist/public/css';
 
 
-gulp.task('default', ['build:server','copy:lib','copy:client', 'build:client']);
+gulp.task('default', ['build:server',
+                      'copy:lib',
+                      'copy:bootstrap',
+                      'copy:client', 
+                      'build:client']);
 
 gulp.task('clean', function(){
     return del('dist')
@@ -28,6 +33,7 @@ gulp.task('build:server', function () {
 });
 
 gulp.task('copy:lib', function () {
+  
   var angular = gulp.src('./node_modules/@angular/**/*.js', {base: './node_modules/@angular'})
                 .pipe(gulp.dest(angularPath));
   var rxjs = gulp.src('./node_modules/rxjs/**/*.js', {base: './node_modules/rxjs'})
@@ -40,8 +46,17 @@ gulp.task('copy:lib', function () {
   gulp.src('./node_modules/zone.js/dist/zone.js').pipe(gulp.dest(libPath + '/zone.js/dist'))
   gulp.src('./node_modules/reflect-metadata/Reflect.js').pipe(gulp.dest(libPath + '/reflect-metadata'))
   gulp.src('./node_modules/systemjs/dist/system.src.js').pipe(gulp.dest(libPath + '/systemjs/dist'))
-                
+  gulp.src('./node_modules/jquery/dist/jquery.min.js').pipe(gulp.dest(libPath + '/jquery'));
+  gulp.src('./node_modules/jquery/dist/jquery.min.map').pipe(gulp.dest(libPath + '/jquery'));
+
   return merge(angular, rxjs);
+});
+
+gulp.task('copy:bootstrap', function(){
+  var bootstrap = './node_modules/bootstrap/dist'; 
+  gulp.src(bootstrap + '/css/bootstrap.min.css').pipe(gulp.dest(cssPath));
+  gulp.src(bootstrap + '/js/bootstrap.min.js').pipe(gulp.dest(libPath + '/bootstrap'));
+
 });
 
 gulp.task('copy:client', function(){

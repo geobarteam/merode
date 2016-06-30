@@ -6,10 +6,6 @@ var player = require("./api/player");
 var app = express();
 var mongoose = require('mongoose');
 mongoose.connect(config_1.Config.current.mongoConnectionString);
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
 if (config_1.Config.env == 'development') {
     app.use(function (req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");

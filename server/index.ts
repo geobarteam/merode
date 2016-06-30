@@ -7,10 +7,6 @@ var app = express();
 var mongoose = require('mongoose');
 mongoose.connect(Config.current.mongoConnectionString);
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
 
 if (Config.env == 'development'){
     app.use(function(req, res, next) {

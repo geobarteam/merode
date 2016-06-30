@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TeamService } from './services/team.service'
 import { TeamComponent } from './team/team.component'
 import { DashboardComponent } from './dashboard/dashboard.component'
+import { RegisterComponent} from './register/register.component'
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 import { PlayerDetailComponent } from './team/player-detail.component';
 import { PlayerAddComponent } from './team/player-add.component';
@@ -15,7 +16,12 @@ import { PlayerAddComponent } from './team/player-add.component';
   {
       path: '/dashboard',
       name: 'Dashboard',
-      component: DashboardComponent,
+      component: DashboardComponent
+  },
+  {
+      path: '/register',
+      name: 'Register',
+      component: RegisterComponent,
       useAsDefault: true
   },
   {
