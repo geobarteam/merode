@@ -9,7 +9,8 @@
     "startLite": "gulp && concurrently \"npm run lite\" \"npm run watch\" \"npm start\" ",
     "lite": "lite-server",
     "typings": "typings",
-    "watch": "gulp watch:client"
+    "watch": "gulp watch:client",
+    "test": "cd test && tsc"
   },
   "repository": {
     "type": "git",
@@ -54,6 +55,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-typescript": "^2.13.4",
     "gulp-uglify": "1.2.0",
+    "jasmine-core": "2.4.1",
     "lite-server": "^2.2.0",
     "merge": "^1.2.0",
     "rimraf": "^2.5.2",
