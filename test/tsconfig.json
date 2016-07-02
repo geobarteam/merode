@@ -8,7 +8,6 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "outFile": "specs.js"
+    "suppressImplicitAnyIndexErrors": true
   }
 }
