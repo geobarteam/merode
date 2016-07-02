@@ -26,10 +26,12 @@ gulp.task('clean', function(){
 
 gulp.task('build:server', function () {
 	var tsProject = ts.createProject(path.resolve('./server/tsconfig.json'));
-	return gulp.src(path.resolve('./server/**/*.ts'))
-		.pipe(ts(tsProject))
-		.js
-		.pipe(gulp.dest(path.resolve('./dist')))
+  var tsResult = gulp.src('./server/**/*.ts')
+		.pipe(sourcemaps.init())
+        .pipe(ts(tsProject))
+	return tsResult.js
+        .pipe(sourcemaps.write()) 
+		.pipe(gulp.dest('dist'))
 });
 
 gulp.task('copy:lib', function () {
