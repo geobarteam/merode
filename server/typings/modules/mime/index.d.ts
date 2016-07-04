@@ -31,10 +31,10 @@ var mime: Mime & {
 export = mime;
 }
 declare module 'mime/mime' {
-import alias = require('~mime/mime');
-export = alias;
+import main = require('~mime/mime');
+export = main;
 }
 declare module 'mime' {
-import alias = require('~mime/mime');
-export = alias;
+import main = require('~mime/mime');
+export = main;
 }
