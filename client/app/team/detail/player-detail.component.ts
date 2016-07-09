@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IPlayer } from '../model/IPlayer';
+import { IPlayer } from '../../model/IPlayer';
 import { RouteParams } from '@angular/router-deprecated';
-import { TeamService } from '../services/team.service';
+import { TeamService } from '../../services/team.service';
 
 
 @Component({
+  moduleId: module.id,
   selector: 'player-detail',
   template: `
   <div *ngIf="player">
@@ -17,7 +18,7 @@ import { TeamService } from '../services/team.service';
     <button (click)="goBack()">Back</button>
   </div>
 `,
-styleUrls:['./app/team/player-detail.component.css']
+styleUrls:['player-detail.component.css']
 })
 export class PlayerDetailComponent implements OnInit {
   

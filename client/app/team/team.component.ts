@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
 import { IPlayer } from '../model/IPlayer';
-import { PlayerDetailComponent } from './player-detail.component';
+import { PlayerDetailComponent } from './detail/player-detail.component';
 import { TeamService } from '../services/team.service'
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router-deprecated';

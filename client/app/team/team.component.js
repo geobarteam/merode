@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var player_detail_component_1 = require('./player-detail.component');
+var player_detail_component_1 = require('./detail/player-detail.component');
 var team_service_1 = require('../services/team.service');
 var router_deprecated_1 = require('@angular/router-deprecated');
 var TeamComponent = (function () {

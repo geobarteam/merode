@@ -14,8 +14,8 @@ var team_component_1 = require('./team/team.component');
 var dashboard_component_1 = require('./dashboard/dashboard.component');
 var register_component_1 = require('./register/register.component');
 var router_deprecated_1 = require('@angular/router-deprecated');
-var player_detail_component_1 = require('./team/player-detail.component');
-var player_add_component_1 = require('./team/player-add.component');
+var player_detail_component_1 = require('./team/detail/player-detail.component');
+var player_add_component_1 = require('./team/add/player-add.component');
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'My Team';

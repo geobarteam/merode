@@ -10,30 +10,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_deprecated_1 = require('@angular/router-deprecated');
-var team_service_1 = require('../services/team.service');
-var PlayerAddComponent = (function () {
-    function PlayerAddComponent(teamService, routeParams) {
+var team_service_1 = require('../../services/team.service');
+var PlayerDetailComponent = (function () {
+    function PlayerDetailComponent(teamService, routeParams) {
         this.teamService = teamService;
         this.routeParams = routeParams;
     }
-    PlayerAddComponent.prototype.ngOnInit = function () {
+    PlayerDetailComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var name = this.routeParams.get('name');
+        this.teamService.getPlayer(name)
+            .then(function (player) { return _this.player = player; });
     };
-    PlayerAddComponent.prototype.goBack = function () {
+    PlayerDetailComponent.prototype.goBack = function () {
         window.history.back();
     };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
-    ], PlayerAddComponent.prototype, "player", void 0);
-    PlayerAddComponent = __decorate([
+    ], PlayerDetailComponent.prototype, "player", void 0);
+    PlayerDetailComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'player-detail',
-            templateUrl: 'app/team/player-add.component.html',
-            styleUrls: ['./app/team/player-detail.component.css']
+            template: "\n  <div *ngIf=\"player\">\n    <h2>{{player.name}} details!</h2>\n    <div><label>id: </label>{{player.id}}</div>\n    <div>\n      <label>name: </label>\n      <input [(ngModel)]=\"player.name\" placeholder=\"name\"/>\n    </div>\n    <button (click)=\"goBack()\">Back</button>\n  </div>\n",
+            styleUrls: ['player-detail.component.css']
         }), 
         __metadata('design:paramtypes', [team_service_1.TeamService, router_deprecated_1.RouteParams])
-    ], PlayerAddComponent);
-    return PlayerAddComponent;
+    ], PlayerDetailComponent);
+    return PlayerDetailComponent;
 }());
-exports.PlayerAddComponent = PlayerAddComponent;
-//# sourceMappingURL=player-add.component.js.map
+exports.PlayerDetailComponent = PlayerDetailComponent;
+//# sourceMappingURL=player-detail.component.js.map

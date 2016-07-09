@@ -4,8 +4,8 @@ import { TeamComponent } from './team/team.component'
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { RegisterComponent} from './register/register.component'
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
-import { PlayerDetailComponent } from './team/player-detail.component';
-import { PlayerAddComponent } from './team/player-add.component';
+import { PlayerDetailComponent } from './team/detail/player-detail.component';
+import { PlayerAddComponent } from './team/add/player-add.component';
 
 @RouteConfig([
   {
@@ -36,6 +36,7 @@ import { PlayerAddComponent } from './team/player-add.component';
   }
 ])
 @Component({
+    moduleId: module.id,
     selector: 'my-app',
     template: `
    <h1>{{title}}</h1>
@@ -45,7 +46,7 @@ import { PlayerAddComponent } from './team/player-add.component';
     </nav>
     <router-outlet></router-outlet>
   `,
-  styleUrls: ['./app/app.component.css'],
+  styleUrls: ['app.component.css'],
   directives: [ROUTER_DIRECTIVES],
     providers: [
     ROUTER_PROVIDERS,
