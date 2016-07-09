@@ -9,8 +9,7 @@
     "startLite": "gulp && concurrently \"npm run lite\" \"npm run watch\" \"npm start\" ",
     "lite": "lite-server",
     "typings": "typings",
-    "watch": "gulp watch",
-    "test": "gulp:test"
+    "watch": "gulp watch"
   },
   "repository": {
     "type": "git",

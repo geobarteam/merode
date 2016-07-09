@@ -18,15 +18,12 @@ var libPath = './dist/public/lib',
 gulp.task('default', ['build:server',
   'copy:lib',
   'copy:bootstrap',
-  'copy:client',
-  'build:client', 
-  'test']);
+  'build:client',
+  'copy:client']);
 
 gulp.task('clean', function () {
   return del('dist')
 });
-
-gulp.task('test', ['build:test', 'copy:test']);
 
 gulp.task('build:client', function () {
   var tsProject = ts.createProject('client/tsconfig.json');
@@ -48,23 +45,6 @@ gulp.task('build:server', function () {
     .pipe(gulp.dest('dist'))
 });
 
-gulp.task('build:test', function () {
-  var tsProject = ts.createProject(path.resolve('./test/tsconfig.json'));
-  var tsResult = gulp.src('./test/**/*.ts')
-    .pipe(sourcemaps.init())
-    .pipe(ts(tsProject))
-  return tsResult.js
-    .pipe(concat('specs.js'))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(testPath))
-});
-
-gulp.task('copy:test', function () {
-  gulp.src('./node_modules/jasmine-core/lib/jasmine-core/**/*', { base: './node_modules/jasmine-core/lib/jasmine-core' })
-    .pipe(gulp.dest(testPath + '/lib/jasmine-core'));
-    gulp.src('./test/index.html').pipe(gulp.dest(testPath));
-})
-
 gulp.task('copy:lib', function () {
 
   var angular = gulp.src('./node_modules/@angular/**/*.js', { base: './node_modules/@angular' })
@@ -82,6 +62,8 @@ gulp.task('copy:lib', function () {
   gulp.src('./node_modules/jquery/dist/jquery.min.js').pipe(gulp.dest(libPath + '/jquery'));
   gulp.src('./node_modules/jquery/dist/jquery.min.map').pipe(gulp.dest(libPath + '/jquery'));
 
+  gulp.src('./node_modules/jasmine-core/lib/jasmine-core/**/*').pipe(gulp.dest(libPath + '/jasmine-core'));
+
   return merge(angular, rxjs);
 });
 
@@ -97,15 +79,12 @@ gulp.task('copy:client', function () {
     .pipe(gulp.dest('dist/public'));
 });
 
-gulp.task('watch', ['watch:client', 'watch:test']);
+gulp.task('watch', ['watch:client']);
 
 gulp.task('watch:client', function () {
   gulp.watch('client/**/*', ['copy:client', 'build:client']);
 });
 
-gulp.task('watch:test', function () {
-  gulp.watch('test/**/*', ['test']);
-})
 
 
 

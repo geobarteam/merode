@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
+import 
 
 @Component({
+  moduleId: module.id,
   selector: 'register-component',
-  templateUrl: 'app/register/register.html'
+  templateUrl: 'register.html'
 })
 export class RegisterComponent implements OnInit {
      
@@ -14,6 +16,6 @@ export class RegisterComponent implements OnInit {
      }
 
      submit(user:User){
-        console.debug(user.email);
+        
      }
 }
