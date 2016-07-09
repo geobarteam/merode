@@ -1,4 +1,4 @@
-import { IPlayer } from '../model/IPlayer';
+import { Player } from '../model/player/player';
 import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
@@ -7,7 +7,6 @@ import 'rxjs/add/operator/toPromise';
 export class TeamService {
 
   private heroesUrl = '/api/player';  // URL to web api
-
   private listeUrl = "http://localhost:8000";
   constructor(private http: Http) { 
     if (window.location.href.startsWith(this.listeUrl)){
@@ -15,7 +14,7 @@ export class TeamService {
     }
   }
 
-  getPlayers(teamName:string):Promise<IPlayer[]>{
+  getPlayers(teamName:string):Promise<Player[]>{
     return this.http.get(this.heroesUrl)
                .toPromise()
                .then(response => response.json().data)

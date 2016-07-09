@@ -22,7 +22,13 @@
     });
 
     // #3. Import the spec file explicitly
-    System.import('app/model/user.spec')
+    Promise.all([
+      System.import('app/smoke.spec'),
+      System.import('app/model/user/user.spec'),
+      System.import('app/model/player/player.spec')
+    ])
+    
+    
 
       // #4. wait for all imports to load ...
       //     then re-execute `window.onload` which

@@ -1,11 +1,10 @@
 
 import { Component } from '@angular/core';
-import { IPlayer } from '../model/IPlayer';
+import { Player } from '../model/player/player';
 import { PlayerDetailComponent } from './detail/player-detail.component';
 import { TeamService } from '../services/team.service'
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router-deprecated';
-
 
 @Component({
     selector: 'my-team',
@@ -15,7 +14,7 @@ import { Router } from '@angular/router-deprecated';
 })
 export class TeamComponent implements OnInit { 
     
-    team:IPlayer[];
+    team:Player[];
     constructor(
       private router: Router,
       private teamService: TeamService){
@@ -26,15 +25,15 @@ export class TeamComponent implements OnInit {
         players => this.team = players);
     }
     
-    selectedPlayer: IPlayer;
+    selectedPlayer: Player;
     
     title = 'Tour of players';
         
-    onSelect(player:IPlayer){
+    onSelect(player:Player){
       this.selectedPlayer = player;
     }
     
-    gotoDetail(player: IPlayer) {
+    gotoDetail(player:Player) {
         let link = ['PlayerDetail', { name: player.name }];
         this.router.navigate(link);
         }
