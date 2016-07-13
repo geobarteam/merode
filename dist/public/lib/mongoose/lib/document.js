@@ -9,6 +9,7 @@ var Schema = require('./schema');
 var ObjectExpectedError = require('./error/objectExpected');
 var StrictModeError = require('./error/strict');
 var ValidatorError = require('./schematype').ValidatorError;
+var VersionError = require('./error').VersionError;
 var utils = require('./utils');
 var clone = utils.clone;
 var isMongooseObject = utils.isMongooseObject;
@@ -501,10 +502,15 @@ Document.prototype.set = function(path, val, type, options) {
         }
       }
 
-      var keys = Object.keys(path),
-          i = keys.length,
-          pathtype,
-          key;
+      var keys = Object.keys(path);
+      var i = keys.length;
+      var pathtype;
+      var key;
+
+      if (i === 0 && !this.schema.options.minimize) {
+        this.set(val, {});
+        return;
+      }
 
       while (i--) {
         key = keys[i];
@@ -568,7 +574,14 @@ Document.prototype.set = function(path, val, type, options) {
         this.setValue(path, null);
         cleanModifiedSubpaths(this, path);
       }
-      this.set(val, path, constructing);
+
+      if (Object.keys(val).length === 0) {
+        this.setValue(path, {});
+        this.markModified(path);
+        cleanModifiedSubpaths(this, path);
+      } else {
+        this.set(val, path, constructing);
+      }
       return this;
     }
     this.invalidate(path, new MongooseError.CastError('Object', val, path));
@@ -688,6 +701,10 @@ Document.prototype.set = function(path, val, type, options) {
     this.invalidate(path,
       new MongooseError.CastError(schema.instance, val, path, e));
     shouldSet = false;
+  }
+
+  if (schema.$isSingleNested) {
+    cleanModifiedSubpaths(this, path);
   }
 
   if (shouldSet) {
@@ -1118,7 +1135,7 @@ Document.prototype.isSelected = function isSelected(path) {
  *     });
  *
  * @param {Object} optional options internal options
- * @param {Function} optional callback called after validation completes, passing an error if one occurred
+ * @param {Function} callback optional callback called after validation completes, passing an error if one occurred
  * @return {Promise} Promise
  * @api public
  */
@@ -1876,6 +1893,7 @@ Document.prototype.$__registerHooksFromSchema = function() {
       var args = [].slice.call(arguments);
       var lastArg = args.pop();
       var fn;
+      var originalStack = new Error().stack;
 
       return new Promise.ES6(function(resolve, reject) {
         if (lastArg && typeof lastArg !== 'function') {
@@ -1885,6 +1903,12 @@ Document.prototype.$__registerHooksFromSchema = function() {
         }
         args.push(function(error, result) {
           if (error) {
+            // gh-2633: since VersionError is very generic, take the
+            // stack trace of the original save() function call rather
+            // than the async trace
+            if (error instanceof VersionError) {
+              error.stack = originalStack;
+            }
             _this.$__handleReject(error);
             fn && fn(error);
             reject(error);
@@ -2074,6 +2098,7 @@ Document.prototype.$toObject = function(options, json) {
  *     schema.options.toObject.transform = function (doc, ret, options) {
  *       // remove the _id of every document before returning the result
  *       delete ret._id;
+ *       return ret;
  *     }
  *
  *     // without the transformation in the schema
@@ -2116,6 +2141,7 @@ Document.prototype.$toObject = function(options, json) {
  *           delete ret[prop];
  *         });
  *       }
+ *       return ret;
  *     }
  *
  *     var doc = new Doc({ _id: 'anId', secret: 47, name: 'Wreck-it Ralph' });
@@ -2244,13 +2270,9 @@ Document.prototype.inspect = function(options) {
   var opts;
   if (isPOJO) {
     opts = options;
-  } else if (this.schema.options.toObject) {
-    opts = clone(this.schema.options.toObject);
-  } else {
-    opts = {};
+    opts.minimize = false;
+    opts.retainKeyOrder = true;
   }
-  opts.minimize = false;
-  opts.retainKeyOrder = true;
   return this.toObject(opts);
 };
 
@@ -2278,6 +2300,10 @@ Document.prototype.toString = function() {
  */
 
 Document.prototype.equals = function(doc) {
+  if (!doc) {
+    return false;
+  }
+
   var tid = this.get('_id');
   var docid = doc.get ? doc.get('_id') : doc;
   if (!tid && !docid) {

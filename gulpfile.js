@@ -25,6 +25,13 @@ gulp.task('clean', function () {
   return del('dist')
 });
 
+gulp.task('clean:client', function () {
+  return del('./client/app/**/*.{js,js.map}')
+});
+gulp.task('clean:server', function () {
+  return del('./server/**/*.{js,js.map}')
+});
+
 gulp.task('build:client', function () {
   var tsProject = ts.createProject('client/tsconfig.json');
   var tsResult = gulp.src('client/**/*.ts')

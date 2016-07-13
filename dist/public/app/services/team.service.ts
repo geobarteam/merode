@@ -2,20 +2,19 @@ import { Player } from '../model/player/player';
 import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import { UrlHelper } from './url.helper';
 
 @Injectable()
 export class TeamService {
 
-  private heroesUrl = '/api/player';  // URL to web api
-  private listeUrl = "http://localhost:8000";
-  constructor(private http: Http) { 
-    if (window.location.href.startsWith(this.listeUrl)){
-      this.heroesUrl = "http://localhost:3000" + this.heroesUrl;
-    }
+  private url:string;
+  private suffix = '/api/player';  // URL to web api
+  constructor(private http: Http, private urlHelper:UrlHelper) { 
+      this.url = this.urlHelper.GetUrl(this.suffix);
   }
 
   getPlayers(teamName:string):Promise<Player[]>{
-    return this.http.get(this.heroesUrl)
+    return this.http.get(this.url)
                .toPromise()
                .then(response => response.json().data)
                .catch(this.handleError);
