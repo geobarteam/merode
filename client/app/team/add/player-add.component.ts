@@ -6,8 +6,7 @@ import { TeamService } from '../../services/team.service';
 @Component({
   moduleId: module.id,
   selector: 'player-detail',
-  templateUrl: 'player-add.component.html',
-  styleUrls:['player-detail.component.css']
+  templateUrl: 'player-add.component.html'
 })
 export class PlayerAddComponent implements OnInit {
   

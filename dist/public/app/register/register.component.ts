@@ -10,12 +10,14 @@ import { UserService } from '../services/user.service'
 })
 export class RegisterComponent implements OnInit {
 
+     user:User;
+     step=1;
      
     constructor(private userService:UserService){
 
     }
 
-     user:User;
+     
 
      ngOnInit(){
        this.user = new User();

@@ -1,9 +1,22 @@
 <h3>Register</h3>
 <div class="grid grid-pad">
-  <div class="module player">
+  <div class="module user" [hidden]="step!=1">
     <div>
-      <label>e-mail</label>
-      <input type="text" name="emailinput" [(ngModel)]="user.email" class="form-control" />
+      <label for="email">e-mail</label>
+      <input type="text" name="email" [(ngModel)]="user.email" class="form-control" />
+    </div>
+    <div>
+       <button type="button" class="btn btn-default" (click)="step=2">Register</button>
+    </div>
+  </div>
+  <div [hidden]="step!=2">
+     <div>
+      <label for="password">Password</label>
+      <input type="password" name="password" [(ngModel)]="user.password" class="form-control" />
+    </div>
+    <div>
+      <label for="password2">Repeat your password</label>
+      <input type="password" name="password2" [(ngModel)]="password2" class="form-control" />
     </div>
     <div>
       <button type="button" class="btn btn-default" (click)="submit(user)">Submit</button>
