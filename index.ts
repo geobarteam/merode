@@ -32,6 +32,8 @@ app.use(bodyParser.urlencoded({
 import * as player from "./api/player";
 player.players(app);
 
+
+
 console.log('Port:'+AppConfig.Config.socketPort);
 var server = app.listen(AppConfig.Config.socketPort, function () {
     console.log('Server running at http://127.0.0.1:' + AppConfig.Config.socketPort);

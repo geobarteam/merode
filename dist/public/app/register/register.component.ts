@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user/user';
+import { UserService } from '../services/user.service'
 
 
 @Component({
@@ -8,7 +9,12 @@ import { User } from '../model/user/user';
   templateUrl: 'register.html'
 })
 export class RegisterComponent implements OnInit {
+
      
+    constructor(private userService:UserService){
+
+    }
+
      user:User;
 
      ngOnInit(){
@@ -16,6 +22,9 @@ export class RegisterComponent implements OnInit {
      }
 
      submit(user:User){
+        this.userService.registerUser(user).then((result)=>{
+          console.warn('user saved!');
+        })
         
      }
 }

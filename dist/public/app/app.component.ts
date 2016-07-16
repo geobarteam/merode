@@ -6,7 +6,8 @@ import { RegisterComponent} from './register/register.component'
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 import { PlayerDetailComponent } from './team/detail/player-detail.component';
 import { PlayerAddComponent } from './team/add/player-add.component';
-import { UrlHelper } from './services/url.helper'
+import { UrlHelper } from './services/url.helper';
+import { UserService } from './services/user.service';
 
 
 @RouteConfig([
@@ -53,7 +54,8 @@ import { UrlHelper } from './services/url.helper'
     providers: [
     ROUTER_PROVIDERS,
     TeamService,
-    UrlHelper
+    UrlHelper,
+    UserService
     ]
 })
 export class AppComponent {

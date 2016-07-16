@@ -1,6 +1,6 @@
 import { User } from '../model/user/user';
 import { Injectable }    from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, RequestOptions } from '@angular/http';
 import { UrlHelper } from './url.helper';
 import 'rxjs/add/operator/toPromise';
 
@@ -12,4 +12,18 @@ export class UserService {
        this.url = this.urlHelper.GetUrl(this.suffix);
   }
 
+  registerUser(user:User) {
+    let body = JSON.stringify(user);
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.put(this.url, body, options)
+               .toPromise()
+               .catch(this.handleError);
+  }
+
+   private handleError(error: any) {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
+  }
 }

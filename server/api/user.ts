@@ -7,7 +7,7 @@ import { Config } from "../config/config";
 export function users(app:express.Express) {
 
     /* Create */
-    app.post('/api/user', function (req, res) {
+    app.put('/api/user', function (req, res) {
         var newUser = new User(req.body);
         newUser.save((err)=>{
             if (err){
@@ -16,7 +16,7 @@ export function users(app:express.Express) {
             res.json({info: 'user saved successfully', data: newUser}); 
         });
     });
-
+ 
     /* Read */
     app.get('/api/user', function (req, res) {
         User.find((err, users) => {

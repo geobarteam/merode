@@ -2,6 +2,8 @@ import * as express from "express";
 import * as bodyParser from "body-parser"
 import { Config } from "./config/config"
 import * as player from "./api/player";
+import * as user from "./api/user"
+
 var app = express();
 
 var mongoose = require('mongoose');
@@ -16,13 +18,14 @@ if (Config.env == 'development'){
     });
 };
 
-player.players(app);
-
 app.use('/', express.static(Config.current.root + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+player.players(app);
+user.users(app);
 
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
