@@ -1,31 +1,36 @@
 <h3>Register</h3>
-{{diagnostic}}
-<form (ngSubmit)="onSubmit()" #register="ngForm">
+
+<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">
   <div class="grid grid-pad">
     <div [hidden]="submitted">
       <div class="module user" [hidden]="step!=1">
         <div>
           <label for="email">e-mail</label>
-          <input type="text" name="email" [(ngModel)]="user.email" class="form-control" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #email="ngModel">
+          <input type="text" class="form-control" formControlName="email">
         </div>
-        <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+        {{myForm.controls.email.errors|json}}
+        <div [hidden]="!(!myForm.controls.email.valid && myForm.controls.email.errors.required)|| myForm.controls.email.pristine" class="alert alert-danger">
           e-mail is required
         </div>
+         <div [hidden]="!(!myForm.controls.email.valid && myForm.controls.email.errors.pattern)|| myForm.controls.email.pristine" class="alert alert-danger">
+          e-mail is invalid
+        </div>
+     
         <div>
-          <button type="button" class="btn btn-default" [disabled]="!email.valid" (click)="step=2">Register</button>
+          <button type="button" class="btn btn-default" (click)="step=2">Register</button>
         </div>
       </div>
       <div [hidden]="step!=2">
         <div>
           <label for="password">Password</label>
-          <input type="password" name="password" [(ngModel)]="user.password" class="form-control" required />
+          <input type="password" class="form-control" formControlName="password" />
         </div>
         <div>
           <label for="password2">Repeat your password</label>
-          <input type="password" name="password2" [(ngModel)]="password2" class="form-control" required/>
+          <input type="password" name="password2" formControlName="password"/>
         </div>
         <div>
-          <button type="submit" class="btn btn-default" [disabled]="!register.form.valid" class="btn btn-default">Submit</button>
+          <button type="submit" class="btn btn-default"  class="btn btn-default">Submit</button>
         </div>
       </div>
     </div>
@@ -33,7 +38,7 @@
       <h2>Congratulation, you're now registered!</h2>
       <div class="row">
         <div class="col-xs-3">E-mail</div>
-        <div class="col-xs-9  pull-left">{{ user.email }}</div>
+        <div class="col-xs-9  pull-left">{{ myForm.controls.email.value }}</div>
       </div>
       <br>
     </div>
