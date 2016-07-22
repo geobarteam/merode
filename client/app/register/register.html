@@ -1,25 +1,41 @@
 <h3>Register</h3>
-<div class="grid grid-pad">
-  <div class="module user" [hidden]="step!=1">
-    <div>
-      <label for="email">e-mail</label>
-      <input type="text" name="email" [(ngModel)]="user.email" class="form-control" />
+{{diagnostic}}
+<form (ngSubmit)="onSubmit()" #register="ngForm">
+  <div class="grid grid-pad">
+    <div [hidden]="submitted">
+      <div class="module user" [hidden]="step!=1">
+        <div>
+          <label for="email">e-mail</label>
+          <input type="text" name="email" [(ngModel)]="user.email" class="form-control" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #email="ngModel">
+        </div>
+        <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+          e-mail is required
+        </div>
+        <div>
+          <button type="button" class="btn btn-default" [disabled]="!email.valid" (click)="step=2">Register</button>
+        </div>
+      </div>
+      <div [hidden]="step!=2">
+        <div>
+          <label for="password">Password</label>
+          <input type="password" name="password" [(ngModel)]="user.password" class="form-control" required />
+        </div>
+        <div>
+          <label for="password2">Repeat your password</label>
+          <input type="password" name="password2" [(ngModel)]="password2" class="form-control" required/>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-default" [disabled]="!register.form.valid" class="btn btn-default">Submit</button>
+        </div>
+      </div>
     </div>
-    <div>
-       <button type="button" class="btn btn-default" (click)="step=2">Register</button>
+    <div [hidden]="!submitted">
+      <h2>Congratulation, you're now registered!</h2>
+      <div class="row">
+        <div class="col-xs-3">E-mail</div>
+        <div class="col-xs-9  pull-left">{{ user.email }}</div>
+      </div>
+      <br>
     </div>
   </div>
-  <div [hidden]="step!=2">
-     <div>
-      <label for="password">Password</label>
-      <input type="password" name="password" [(ngModel)]="user.password" class="form-control" />
-    </div>
-    <div>
-      <label for="password2">Repeat your password</label>
-      <input type="password" name="password2" [(ngModel)]="password2" class="form-control" />
-    </div>
-    <div>
-      <button type="button" class="btn btn-default" (click)="submit(user)">Submit</button>
-    </div>
-  </div>
-</div>
+</form>

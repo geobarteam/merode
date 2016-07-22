@@ -12,20 +12,22 @@ export class RegisterComponent implements OnInit {
 
      user:User;
      step=1;
-     
+     submitted = false;
+
     constructor(private userService:UserService){
 
     }
 
-     
+    get diagnostic() { return JSON.stringify(this.user); }
 
      ngOnInit(){
        this.user = new User();
      }
 
-     submit(user:User){
-        this.userService.registerUser(user).then((result)=>{
+     onSubmit(){  
+        this.userService.registerUser(this.user).then((result)=>{
           console.warn('user saved!');
+          this.submitted = true;
         })
         
      }

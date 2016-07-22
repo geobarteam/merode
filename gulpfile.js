@@ -56,6 +56,8 @@ gulp.task('copy:lib', function () {
 
   var angular = gulp.src('./node_modules/@angular/**/*.js', { base: './node_modules/@angular' })
     .pipe(gulp.dest(angularPath));
+  var formsUmd = gulp.src('./node_modules/@angular/forms/bundles/forms.umd.js')
+    .pipe(gulp.dest(angularPath + '/forms'));
   var rxjs = gulp.src('./node_modules/rxjs/**/*.js', { base: './node_modules/rxjs' })
     .pipe(gulp.dest(rxjsPath));
 
@@ -70,6 +72,7 @@ gulp.task('copy:lib', function () {
   gulp.src('./node_modules/jquery/dist/jquery.min.map').pipe(gulp.dest(libPath + '/jquery'));
 
   gulp.src('./node_modules/jasmine-core/lib/jasmine-core/**/*').pipe(gulp.dest(libPath + '/jasmine-core'));
+
 
   return merge(angular, rxjs);
 });
