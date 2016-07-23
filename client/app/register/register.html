@@ -8,7 +8,7 @@
           <label for="email">e-mail</label>
           <input type="text" class="form-control" formControlName="email">
         </div>
-        {{myForm.controls.email.errors|json}}
+       
         <div [hidden]="!(!myForm.controls.email.valid && myForm.controls.email.errors.required)|| myForm.controls.email.pristine" class="alert alert-danger">
           e-mail is required
         </div>
@@ -17,7 +17,7 @@
         </div>
      
         <div>
-          <button type="button" class="btn btn-default" (click)="step=2">Register</button>
+          <button type="button" class="btn btn-default" [disabled]="!myForm.controls.email.valid" (click)="step=2">Register</button>
         </div>
       </div>
       <div [hidden]="step!=2">
@@ -25,12 +25,18 @@
           <label for="password">Password</label>
           <input type="password" class="form-control" formControlName="password" />
         </div>
-        <div>
-          <label for="password2">Repeat your password</label>
-          <input type="password" name="password2" formControlName="password"/>
+        <div [hidden]="myForm.controls.password.valid || myForm.controls.password.pristine" class="alert alert-danger">
+          password must be at least 6 characters
         </div>
         <div>
-          <button type="submit" class="btn btn-default"  class="btn btn-default">Submit</button>
+          <label for="password2">Repeat your password</label>
+          <input type="password" class="form-control" formControlName="password2"/>
+        </div>
+        <div [hidden]="myForm.controls.password2.value == myForm.controls.password.value || myForm.controls.password2.pristine" class="alert alert-danger">
+          passwords must be the same!
+        </div>
+        <div>
+          <button type="submit" class="btn btn-default" [disabled]="!(myForm.valid && myForm.controls.password2.value == myForm.controls.password.value)" class="btn btn-default">Submit</button>
         </div>
       </div>
     </div>
